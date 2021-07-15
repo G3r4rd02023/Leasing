@@ -4,39 +4,40 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h5>Propiedades</h5>
+<i class=" fas fa-home fa-5x "></i>
+<hr />
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class=" btn btn-primary"><i class=" fas fa-plus"></i> Crear Nueva Propiedad</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Neighborhood)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Address)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.SquareMeters)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Rooms)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Stratum)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.HasParkingLot)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsAvailable)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Remarks)
             </th>
             <th>
@@ -44,7 +45,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Longitude)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -54,28 +55,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Neighborhood)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Address)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.SquareMeters)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Rooms)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Stratum)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.HasParkingLot)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsAvailable)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Remarks)
             </td>
             <td>
@@ -83,11 +84,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
+            </td>*@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning "><i class=" fas fa-edit"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class=" btn btn-info"><i class=" fas fa-list"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class=" btn btn-danger"><i class=" fas fa-trash"></i></a>
             </td>
         </tr>
 }

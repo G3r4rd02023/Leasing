@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Leasing</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel=" stylesheet" href="~/lib/font-awesome/css/all.min.css"/>
 </head>
 <body>
     <header>
@@ -29,8 +30,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">File</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-controller="Managers" asp-action="Index">Managers</a>
-                                    <a class="dropdown-item" asp-controller="PropertyTypes" asp-action="Index">Types</a>
+                                    <a class="dropdown-item" asp-controller="Managers" asp-action="Index"><i class=" fas fa-user-alt"></i>Managers</a>
+                                    <a class="dropdown-item" asp-controller="PropertyTypes" asp-action="Index"><i class=" fas fa-object-group"></i>Types</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                     <div class="dropdown-divider"></div>
@@ -38,16 +39,16 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Owners" asp-action="Index">Propietarios</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Owners" asp-action="Index"><i class="fas fa-key"></i>Propietarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Lessees" asp-action="Index">Arrendatarios</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Lessees" asp-action="Index"><i class=" fas fa-house-user"></i>Arrendatarios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Contracts" asp-action="Index">Contratos</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Contracts" asp-action="Index"><i class="fas fa-file"></i>Contratos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Properties" asp-action="Index">Propiedades</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Properties" asp-action="Index"><i class=" fas fa-home"></i>Propiedades</a>
                             </li>                           
                         }
                     </ul>
@@ -55,7 +56,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ChangeUser"><i class="fas fa-user-circle "></i>@User.Identity.Name</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Salir</a>
@@ -64,7 +65,7 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Iniciar Sesión><i class="fas fa-user-shield "></i></a>
                             </li>                          
                         }
                     </ul>                   

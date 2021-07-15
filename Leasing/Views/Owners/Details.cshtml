@@ -4,15 +4,191 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
+<h4>Propietarios</h4><i class=" fas fa-user fa-5x"></i>
+<hr />
 <div>
-    <h4>Owner</h4>
+    <h5>Detalles</h5>
     <hr />
-    <dl class="row">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Document)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Document)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+        <dt>
+           Telefono
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.PhoneNumber)
+        </dd>
+        <dt>
+            Propiedades
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Properties.Count)
+        </dd>
+        <dt>
+            Contratos
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contracts.Count)
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class=" fas fa-edit"></i></a>
+    <a asp-action="AddProperty" asp-route-id="@Model.Id" class="btn btn-primary"><i class=" fas fa-home"></i></a>
+    <a asp-action="Index" class="btn btn-success"><i class=" fas fa-undo-alt"></i></a>
 </div>
+<h4>Propiedades</h4>
+@if (Model.Properties.Count == 0)
+{
+    <h5>No se han agregado propiedades.</h5>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().PropertyType.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().Neighborhood)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().Price)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().SquareMeters)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().Rooms)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().Stratum)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().HasParkingLot)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Properties.FirstOrDefault().IsAvailable)
+                </th>
+                <th>
+                    Imagenes
+                </th>
+                <th>
+                    Contratos
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Properties)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PropertyType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Neighborhood)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.SquareMeters)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rooms)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Stratum)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HasParkingLot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAvailable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PropertyImages.Count)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contracts.Count)
+                    </td>
+                    <td>
+                        <a asp-action="EditProperty" asp-route-id="@item.Id" class="btn btn-warning"><i class=" fas fa-edit"></i></a>
+                        <a asp-action="DetailsProperty" asp-route-id="@item.Id" class="btn btn-info"><i class=" fas fa-list"></i></a>
+                        <button data-id="@item.Id" class="btn btn-danger deleteItem"
+                                data-toggle="modal" data-target="#deleteDialog"><i class=" fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<!--Delete Item-->
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete the record?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="btnYesDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+    	$(document).ready(function () {
+        	// Delete item
+        	var item_to_delete;
+
+        	$('.deleteItem').click((e) => {
+            	item_to_delete = e.currentTarget.dataset.id;
+        	});
+
+        	$("#btnYesDelete").click(function () {
+            	window.location.href = '/Owners/DeleteProperty/' + item_to_delete;
+        	});
+    	});
+    </script>
+}
